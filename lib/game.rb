@@ -27,3 +27,7 @@ class Game
   def swap
     current_player = @players.rotate!(1)[0]
   end
+end
+if __FILE__ == $PROGRAM_NAME
+  Game.new.play
+end
