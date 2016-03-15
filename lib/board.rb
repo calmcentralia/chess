@@ -3,13 +3,13 @@ require_relative 'pieces'
 class Board
   attr_reader :rows
 
-  def initialize(fill_board? = true)
-    make_grid(fill_board?)
+  def initialize(to_fill = true)
+    make_grid(to_fill)
   end
 
-  def make_grid(fill_board?)
-    @rows = Array.new(8) { Array.new(8, new NullPiece) }
-    return unless fill_board?
+  def make_grid(to_fill)
+    @rows = Array.new(8) { Array.new(8, NullPiece.new) }
+    return unless to_fill
     back_pieces = [
       Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook
     ]
@@ -32,6 +32,10 @@ class Board
   def []=(pos, piece)
     i, j = pos
     @rows[i][j] = piece
+  end
+
+  def add_piece(piece, pos)
+    @rows[pos[0]][pos[1]] = piece;
   end
 
   def checkmate?(color)
@@ -59,7 +63,7 @@ class Board
  def in_check?(color)
     king_pos = find_king(color).pos
     pieces.any? do |p|
-      p.color != color && p.moves.include?(king_pos)
+      p.color != color && p.all_moves.include?(king_pos)
     end
   end
 
@@ -68,7 +72,9 @@ class Board
   end
 
   def valid_move?(pos)
-    pos.all? { |coord| coord.between?(0, 7) }
+    pos.all? do |coord|
+      coord <= 7 && coord >=0
+    end
   end
 
   def move_piece(turn_color, from_pos, to_pos)
@@ -77,7 +83,7 @@ class Board
     piece = self[from_pos]
     if piece.color != turn_color
       raise 'You have to move your own piece'
-    elsif !piece.moves.include?(to_pos)
+    elsif !piece.all_moves.include?(to_pos)
       raise 'Not a valid move'
     elsif !piece.valid_moves.include?(to_pos)
       raise 'You cannot move into check'
@@ -89,7 +95,7 @@ class Board
   def move_piece!(current, final)
     piece = self[current]
     self[final] = piece
-    self[current] = new NullPiece
+    self[current] = NullPiece.new
     piece.pos = final
     nil
   end

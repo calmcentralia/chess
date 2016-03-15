@@ -4,7 +4,7 @@ require_relative 'sliding_pieces'
 class Queen < Piece
   SCORE = 10
 
-  include Slideable
+  include SlidingPieces
 
   def symbol
     '♛'.colorize(color)

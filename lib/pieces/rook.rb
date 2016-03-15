@@ -4,7 +4,7 @@ require_relative 'sliding_pieces'
 class Rook < Piece
   SCORE = 5
 
-  include Slideable
+  include SlidingPieces
 
   def symbol
     '♜'.colorize(color)

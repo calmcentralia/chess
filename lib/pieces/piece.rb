@@ -35,7 +35,8 @@ class Piece
 end
 
 class NullPiece
-  include Singleton
+  def initialize
+  end
 
   def moves
     []

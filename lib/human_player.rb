@@ -16,3 +16,5 @@ class HumanPlayer < Player
       end
     end
     [piece_choice, move_choice]
+  end
+end

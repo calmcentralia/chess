@@ -15,6 +15,10 @@ class Pawn < Piece
     end
   end
 
+  def all_moves
+    step_moves + attacks
+  end
+
   def unmoved?
     if color == :white
       pos[0] == 6

@@ -4,7 +4,7 @@ require_relative 'stepping_pieces'
 class King < Piece
   SCORE = 0
 
-  include Stepable
+  include SteppingPieces
 
   def symbol
     '♚'.colorize(color)

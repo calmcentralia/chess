@@ -4,7 +4,7 @@ require_relative 'sliding_pieces'
 class Bishop < Piece
   SCORE = 3
 
-  include Slideable
+  include SlidingPieces
 
   def symbol
     '♝'.colorize(color)

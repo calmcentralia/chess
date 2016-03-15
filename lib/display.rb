@@ -1,4 +1,4 @@
-equire "colorize"
+require "colorize"
 require_relative "cursorable"
 
 class Display
@@ -30,10 +30,11 @@ class Display
       end
     end
     grid
-
+  end
 
   def render
    system("clear")
    puts "Arrow keys or WASD to move, space or enter to confirm."
    make_grid.each { |row| puts row.join }
- end
+  end
+end
