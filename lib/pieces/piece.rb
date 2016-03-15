@@ -5,8 +5,6 @@ class Piece
   attr_accessor :pos
 
   def initialize(color, board, pos)
-    raise 'invalid color' unless [:white, :black].include?(color)
-    raise 'invalid pos' unless board.valid_move?(pos)
 
     @color, @board, @pos = color, board, pos
 
@@ -23,7 +21,7 @@ class Piece
 
 
   def valid_moves
-    moves.reject { |to_pos| move_into_check?(to_pos) }
+    all_moves.reject { |to_pos| move_into_check?(to_pos) }
   end
 
 

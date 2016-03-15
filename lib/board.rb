@@ -78,15 +78,17 @@ class Board
   end
 
   def move_piece(turn_color, from_pos, to_pos)
-    raise 'from position is empty' if empty?(from_pos)
 
     piece = self[from_pos]
     if piece.color != turn_color
-      raise 'You have to move your own piece'
+      puts 'You have to move your own piece'
+      return nil
     elsif !piece.all_moves.include?(to_pos)
-      raise 'Not a valid move'
+      puts 'Not a valid move'
+      return nil
     elsif !piece.valid_moves.include?(to_pos)
-      raise 'You cannot move into check'
+      puts 'You cannot move into check'
+      return nil
     end
 
     move_piece!(from_pos, to_pos)
@@ -97,7 +99,7 @@ class Board
     self[final] = piece
     self[current] = NullPiece.new
     piece.pos = final
-    nil
+    return 0
   end
 
   def find_king(color)

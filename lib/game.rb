@@ -11,13 +11,17 @@ class Game
       white: HumanPlayer.new(:white, @display),
       black: HumanPlayer.new(:black, @display)
     }
+
     @current_player = :white
   end
 
   def play
     until board.checkmate?(current_player)
-      positions =  players[current_player].make_move(board)
-      board.move_piece(current_player, positions[0], positions[1])
+      valid = false
+      until valid
+        positions =  players[current_player].make_move(board)
+        valid = true unless board.move_piece(current_player, positions[0], positions[1]).nil?
+      end
       swap
     end
     display.render
@@ -25,7 +29,8 @@ class Game
   end
 
   def swap
-    current_player = @players.rotate!(1)[0]
+    @current_player = current_player == :white ? :black : :white
+
   end
 end
 if __FILE__ == $PROGRAM_NAME

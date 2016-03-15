@@ -16,17 +16,15 @@ class Display
     grid = Array.new(8) { Array.new(8) }
     @board.rows.each_with_index do |row, i|
       row.each_with_index do |piece, j|
+
         if [i, j] == @cursor_pos
           bg = :light_yellow
         elsif (i + j).odd?
           bg = :light_blue
         else
-          bg = :light_green
+          bg = :light_red
         end
-
-        piece.to_s.colorize({ background: bg })
-
-        grid[i][j] = piece
+        grid[i][j] = piece.to_s.colorize({ background: bg })
       end
     end
     grid
