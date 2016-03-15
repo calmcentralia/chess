@@ -25,15 +25,15 @@ module SlidingPieces
 
   def all_options_in_dir(x, y)
     moves = []
-    @pos = [@pos[0]+ x, @pos[1] + y]
-    while board.valid_move?(@pos)
-      if board.empty?(@pos)
-        moves << @pos
+    curr_move = [@pos[0]+ x, @pos[1] + y]
+    while board.valid_move?(curr_move)
+      if board.empty?(curr_move)
+        moves << curr_move
       else
-        moves << @pos if board[@pos].color != color
+        moves << curr_move if board[curr_move].color != color
         break
       end
-      @pos = [@pos[0] + x, @pos[1] + y]
+      curr_move = [curr_move[0] + x, curr_move[1] + y]
     end
     moves
   end
