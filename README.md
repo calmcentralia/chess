@@ -88,6 +88,6 @@ First we see that a player is in check.   We then select all the pieces of the c
 
 ## Future Features
 
- -More descriptive feedback for when making an invalid move
- -add in En Passant and Castling
- -add in Promotion and allow the player their choice of Queen, Rook, Bishop or Knight.
+ - More descriptive feedback for when making an invalid move
+ - add in En Passant and Castling
+ - add in Promotion and allow the player their choice of Queen, Rook, Bishop or Knight.
