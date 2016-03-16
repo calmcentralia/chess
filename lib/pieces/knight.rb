@@ -2,7 +2,6 @@ require_relative 'piece'
 require_relative 'stepping_pieces'
 
 class Knight < Piece
-  SCORE = 3
 
   include SteppingPieces
 

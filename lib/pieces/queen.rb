@@ -2,8 +2,7 @@ require_relative 'piece'
 require_relative 'sliding_pieces'
 
 class Queen < Piece
-  SCORE = 10
-
+  
   include SlidingPieces
 
   def symbol

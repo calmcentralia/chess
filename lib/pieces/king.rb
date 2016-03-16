@@ -2,7 +2,6 @@ require_relative 'piece'
 require_relative 'stepping_pieces'
 
 class King < Piece
-  SCORE = 0
 
   include SteppingPieces
 

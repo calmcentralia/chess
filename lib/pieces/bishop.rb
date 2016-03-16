@@ -2,7 +2,6 @@ require_relative 'piece'
 require_relative 'sliding_pieces'
 
 class Bishop < Piece
-  SCORE = 3
 
   include SlidingPieces
 

@@ -2,7 +2,7 @@ require_relative 'piece'
 require_relative 'sliding_pieces'
 
 class Rook < Piece
-  SCORE = 5
+  
 
   include SlidingPieces
 
