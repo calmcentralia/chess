@@ -1,6 +1,6 @@
 # Chess
 
-##Implementation Details
+## Implementation Details
 
 Built in Ruby to run in console. Clone this repo and from the root folder run:
     ruby lib/game.rb

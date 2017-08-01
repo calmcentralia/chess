@@ -1,4 +1,3 @@
-require "byebug"
 module SlidingPieces
 
   def horizontal_dirs
